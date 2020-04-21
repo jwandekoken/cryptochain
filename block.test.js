@@ -1,5 +1,8 @@
 const Block = require("./block");
+const { GENESIS_DATA } = require("./config");
 
+// https://jestjs.io/docs/en/api#describename-fn
+// describe(name, fn) creates a block that groups together several related tests.
 describe("Block", () => {
   const timestamp = "a-date";
   const lastHash = "foo-hash";
@@ -22,5 +25,17 @@ describe("Block", () => {
     expect(block.lastHash).toEqual(lastHash);
     expect(block.hash).toEqual(hash);
     expect(block.data).toEqual(data);
+  });
+
+  describe("genesis()", () => {
+    const genesisBlock = Block.genesis();
+
+    it("returns a Block instance", () => {
+      expect(genesisBlock instanceof Block).toBe(true);
+    });
+
+    it("returns the genesis data", () => {
+      expect(genesisBlock).toEqual(GENESIS_DATA);
+    });
   });
 });
