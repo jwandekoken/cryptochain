@@ -1,5 +1,6 @@
 const Block = require("./block");
 const { GENESIS_DATA } = require("./config");
+const cryptoHash = require("./crypto-hash");
 
 // https://jestjs.io/docs/en/api#describename-fn
 // describe(name, fn) creates a block that groups together several related tests.
@@ -58,6 +59,12 @@ describe("Block", () => {
 
     it("sets a `timestamp`", () => {
       expect(minedBlock.timestamp).not.toEqual(undefined);
+    });
+
+    it("creates a SHA-256 `hash` on the proper inputs", () => {
+      expect(minedBlock.hash).toEqual(
+        cryptoHash(minedBlock.timestamp, lastBlock.hash, data)
+      );
     });
   });
 });
