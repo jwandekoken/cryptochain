@@ -2,8 +2,6 @@ const Block = require("./block");
 const { GENESIS_DATA } = require("./config");
 const cryptoHash = require("./crypto-hash");
 
-// https://jestjs.io/docs/en/api#describename-fn
-// describe(name, fn) creates a block that groups together several related tests.
 describe("Block", () => {
   const timestamp = "a-date";
   const lastHash = "foo-hash";
@@ -17,11 +15,7 @@ describe("Block", () => {
     data,
   });
 
-  // https://jestjs.io/docs/en/api.html#testname-fn-timeout
-  // test(name, fn, timeout)
-  // Also under the alias: it(name, fn, timeout)
   it("has a timestamp, lastHash, hash and data property", () => {
-    // obs: it is a best practice to have only one expect fn inside a it/test fn
     expect(block.timestamp).toEqual(timestamp);
     expect(block.lastHash).toEqual(lastHash);
     expect(block.hash).toEqual(hash);

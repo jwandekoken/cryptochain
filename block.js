@@ -10,8 +10,6 @@ class Block {
   }
 
   static genesis() {
-    // o this é o mesmo que usar "Block"
-    // new Block(GENESIS_DATA)
     return new this(GENESIS_DATA);
   }
 

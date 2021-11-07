@@ -4,8 +4,6 @@ const Block = require("./block");
 describe("Blockchain", () => {
   let blockchain;
 
-  // https://jestjs.io/docs/en/api#beforeeachfn-timeout
-  // Runs a function before each of the tests in this file runs.
   beforeEach(() => {
     blockchain = new Blockchain();
   });
@@ -34,7 +32,6 @@ describe("Blockchain", () => {
     });
 
     describe("when the chain starts with the genesis block and has multiple blocks", () => {
-      // a function passada para o beforeEach será executada em todos os testes dentro desse describe, assim não temos que repetir o mesmo código diversas vezes
       beforeEach(() => {
         blockchain.addBlock({ data: "Bears" });
         blockchain.addBlock({ data: "Beets" });
